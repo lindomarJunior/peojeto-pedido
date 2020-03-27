@@ -1,0 +1,29 @@
+<div ng-controller="pedidoController" data-ng-init="carregarPedidos()">
+	<h3>{{titulo}}</h3>
+	<br>
+	<table class="table">
+	  <thead class="thead-light">
+	    <tr>
+	    <th scope="col"></th>
+		  <th scope="col">Codigo Pedido</th>
+		  <th scope="col">Nome Cliente</th>
+	      <th class="text-right" scope="col">
+		      <form name="formPedido" ng-submit="adicionarPedido()">
+		      	<input type="text" id="campoCodigo" placeholder="codigo do pedido" ng-model="codPedido"> 
+		      	<button type="submit" class="btn btn-success btn-ms">Adicionar</button>
+		      </form>
+		  </th>
+	    </tr>
+	  </thead>
+	  <tbody>
+	    <tr ng-repeat="pedido in pedidos">
+	      <th scope="col">
+	      	<input type="checkbox" checklist-model="listaCodPedidos" checklist-value="pedido.id">
+	      </th>
+		  <th scope="row">{{ pedido.id }}</th>
+		  <th scope="row">{{ pedido.cliente.nome }}</th>
+	      <td class="text-right"> <a href="pedido/{{ pedido.id }}" class="btn btn-primary btn-ms">Modificar</a></td>
+	    </tr>
+	  </tbody>
+	</table>
+</div>

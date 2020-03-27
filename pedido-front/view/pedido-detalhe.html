@@ -1,0 +1,94 @@
+<div ng-controller="pedidoController" data-ng-init="carregarPedidoDetalhe()">
+	
+	<table class="table">
+		<thead class="thead-light">
+		  <tr>
+			<th scope="col">Cliente</th>
+		  </tr>
+		</thead>
+		<tbody>
+		  <tr ng-repeat="produto in produtos">
+			<th scope="row">
+				<select ng-model="idCliente">
+					<option>Selecione</option>
+					<option ng-repeat="cliente in clientes" value="{{cliente.id}}">{{cliente.nome}}</option>
+				</select>
+			</th>
+		  </tr>
+		</tbody>
+	  </table>
+	
+	  <h3>Produtos</h3>
+	<table class="table">
+	  <thead class="thead-light">
+	    <tr>
+	      <th scope="col">Produto</th>
+	      <th scope="col"></th>
+	    </tr>
+	  </thead>
+	  <tbody>
+	    <tr ng-repeat="produto in produtos">
+	      <th scope="row">{{ produto.nome }}</th>
+	      <th class="text-right" scope="row">
+	      	<!-- Button trigger modal -->
+			<button type="button" ng-click="valorizarIdProduto(produto.id)" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+			  Adicionar ao Pedida
+			</button>
+	      </th>
+	    </tr>
+	  </tbody>
+	</table>
+	
+	<h3>Pedido</h3>
+	<table class="table">
+	  <thead class="thead-light">
+	    <tr>
+	      <th scope="col">Produto</th>
+	      <th scope="col">Quantidade</th>
+	      <th scope="col"></th>
+	    </tr>
+	  </thead>
+	  <tbody>
+	    <tr ng-repeat="iten in itens">
+	      <th scope="row">{{ iten.produto.nome }}</th>
+	      <th scope="row">{{ iten.quantidade }}</th>
+	      <th class="text-right" scope="row">
+	      	<button type="button" ng-click="valorizarIdProduto(iten.produto.id)" class="btn btn-secondary" data-toggle="modal" data-target="#exampleModalCenter1">
+			  Remover do Pedido
+			</button>
+	      </th>
+	    </tr>
+	  </tbody>
+	</table>
+	
+	
+	<!-- Modal -->
+	<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+	  <div class="modal-dialog modal-dialog-centered" role="document">
+	    <div class="modal-content">
+	      <div class="modal-body">
+	      	Quantidade: <input type="text" size="3" id="campoQtd" ng-model="quantidade"> 
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+	        <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="inserirItem()">Adicionar</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	
+	<!-- Modal -->
+	<div class="modal fade" id="exampleModalCenter1" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+	  <div class="modal-dialog modal-dialog-centered" role="document">
+	    <div class="modal-content">
+	      <div class="modal-body">
+	      	Quantidade: <input type="text" size="3" id="campoQtd" ng-model="quantidade"> 
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+	        <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="removerItem()">Remover</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+</div>
