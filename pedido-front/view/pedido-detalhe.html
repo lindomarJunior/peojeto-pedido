@@ -9,7 +9,8 @@
 			<tbody>
 				<th scope="row">
 					<select class="form-control input-sm" ng-model="pedido.cliente"
-						ng-options="cliente as cliente.nome for cliente in clientes track by cliente.id" >
+						ng-options="cliente as cliente.nome for cliente in clientes track by cliente.id" 
+						ng-required="true">
 						<option value="">Selecione</option>
 					</select>
 				</th>
