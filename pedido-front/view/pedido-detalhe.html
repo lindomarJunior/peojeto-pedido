@@ -32,7 +32,7 @@
 					<th scope="row">{{ produto.quantidade }}</th>
 					<th class="text-right" scope="row">
 						<!-- Button trigger modal -->
-						<button type="button" ng-click="valorizarProduto(produto)" class="btn btn-primary"
+						<button type="button" ng-click="valorizarProduto(produto, produto.quantidade)" class="btn btn-primary"
 							data-toggle="modal" data-target="#exampleModalCenter">
 							Adicionar ao Pedida
 						</button>
@@ -55,7 +55,7 @@
 					<th scope="row">{{ item.produto.nome }}</th>
 					<th scope="row">{{ item.quantidade }}</th>
 					<th class="text-right" scope="row">
-						<button type="button" ng-click="valorizarProduto(item.produto)" class="btn btn-secondary"
+						<button type="button" ng-click="valorizarProduto(item.produto, item.quantidade)" class="btn btn-secondary"
 							data-toggle="modal" data-target="#exampleModalCenter1">
 							Remover do Pedido
 						</button>
@@ -76,7 +76,7 @@
 		<div class="modal-dialog modal-dialog-centered" role="document">
 			<div class="modal-content">
 				<div class="modal-body">
-					Quantidade: <input type="text" size="3" id="campoQtd" ng-model="quantidade">
+					Quantidade: <input type="text" size="3" id="campoQtd" ng-model="quantidade" ng-required="true">
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>

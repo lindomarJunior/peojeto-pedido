@@ -59,11 +59,16 @@ angular.module("appPedido").controller("pedidoController", function ($scope, $ro
         }
     };
 
-    $scope.valorizarProduto = function (produto) {
+    $scope.valorizarProduto = function (produto, quantidade) {
         $scope.produto = produto;
+        $scope.quantidade = quantidade;
     };
 
     $scope.inserirItem = function () {
+        if(!$scope.quantidade){
+            return;
+        }
+
         $scope.item.produto = $scope.produto;
         $scope.item.quantidade = $scope.quantidade;
         $scope.pedido.itens.forEach(function (item) {
@@ -84,6 +89,9 @@ angular.module("appPedido").controller("pedidoController", function ($scope, $ro
     };
 
     $scope.removerItem = function () {
+        if(!$scope.quantidade){
+            return;
+        }
 
         $scope.pedido.itens.forEach(function (item, index, object) {
             if (item.produto.id === $scope.produto.id) {
