@@ -1,4 +1,6 @@
 # Execução do projeto
+Banco de dados:
+ter instalado o banco de dados mysql com um banco criado com nome "pedido";
 
 Backend:
 Necessário rodar com o maven com comando spring-boot:run
