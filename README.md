@@ -1,4 +1,15 @@
-# Execução do projeto
+# Execução do projeto com Docker
+
+Na raiz do projeto frontend executar os dois comandos:
+docker build -t pedido-front .
+docker run -p 8000:8000 -d pedido-front
+
+Na raiz do projeto backend executar os dois comandos:
+docker build -t lindomar/imagem-projeto .
+docker-compose up
+
+# Execução do projeto em ambiente de desenvolvimento
+
 Banco de dados:
 ter instalado o banco de dados mysql com um banco criado com nome "pedido";
 
