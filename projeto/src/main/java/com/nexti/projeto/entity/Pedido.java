@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -13,6 +14,7 @@ import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+@Entity
 public class Pedido {
 	
 	@Id
@@ -24,7 +26,7 @@ public class Pedido {
 	
 	@JsonIgnoreProperties("pedido")
 	@OneToMany(mappedBy="pedido", cascade = CascadeType.ALL)
-	private List<Item> produtos;
+	private List<Item> itens;
 	
 	private BigDecimal total;
 	
@@ -42,11 +44,11 @@ public class Pedido {
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
 	}
-	public List<Item> getProdutos() {
-		return produtos;
+	public List<Item> getItens() {
+		return itens;
 	}
-	public void setProdutos(List<Item> produtos) {
-		this.produtos = produtos;
+	public void setItens(List<Item> itens) {
+		this.itens = itens;
 	}
 	public BigDecimal getTotal() {
 		return total;
