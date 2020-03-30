@@ -1,0 +1,47 @@
+<div ng-controller="produtoController" data-ng-init="carregarProdutos()">
+	<h3>{{titulo}}</h3>
+	<br>
+	<table class="table">
+	  <thead class="thead-light">
+	    <tr>
+		  <th scope="col">SKU</th>
+		  <th scope="col">Nome</th>
+		  <th scope="col">Preço</th>
+		  <th scope="col">Quantidade no estoque</th>
+	      <th class="text-right" scope="col">
+		      <form name="formProduto" ng-submit="adicionarProduto()">
+		      	<a href="produto-detalhe" class="btn btn-success btn-ms">Adicionar</a>
+		      </form>
+		  </th>
+	  </thead>
+	  <tbody>
+	    <tr ng-repeat="produto in produtos">
+		  <th scope="row">{{ produto.sku }}</th>
+		  <th scope="row">{{ produto.nome }}</th>
+		  <th scope="row">{{ produto.preco }}</th>
+		  <th scope="row">{{ produto.quantidade }}</th>
+		  <th class="text-right" scope="row">
+				<a href="produto-detalhe/{{produto.id}}" class="btn btn-primary btn-ms">Modificar</a>
+				<button type="button" class="btn btn-danger btn-ms" ng-click="valorizarId(produto.id)" data-toggle="modal" data-target="#exampleModalCenter">
+					Excluir
+				</button>
+		  </th>
+	    </tr>
+	  </tbody>
+	</table>
+
+	<!-- Modal -->
+	<div class="modal fade" id="exampleModalCenter" role="dialog" >
+		<div class="modal-dialog modal-dialog-centered" role="document">
+		  <div class="modal-content">
+			<div class="modal-body">
+				<h4>Tem certeza que deseja excluir Produto?</h4>
+			</div>
+			<div class="modal-footer">
+			  <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+			  <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="excluirProduto()">Excluir</button>
+			</div>
+		  </div>
+		</div>
+	  </div>
+</div>

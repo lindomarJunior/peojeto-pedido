@@ -20,10 +20,10 @@ angular.module("appPedido").factory("pedidoFactory", function($q, $http){
 
 			return promessa.promise;
 		},
-		criarPedido: function(codPedido){
+		salvar: function(pedido){
 			var promessa = $q.defer();
 
-			$http.post("http://localhost:8080/pedido", codPedido).then(function(result){
+			$http.post("http://localhost:8080/pedido", pedido).then(function(result){
 				var codResposta = result.data;
 				promessa.resolve(codResposta);
 			})
@@ -69,6 +69,26 @@ angular.module("appPedido").factory("pedidoFactory", function($q, $http){
 			})
 
 			return promessa.promise;
-		}
+		},
+		consultar: function(id){
+			var promessa = $q.defer();
+
+			$http.get("http://localhost:8080/pedido/"+id).then(function(result){
+				var pedido = result.data;
+				promessa.resolve(pedido);
+			})
+
+			return promessa.promise;
+		},
+		excluir: function(id){
+			var promessa = $q.defer();
+
+			$http.post("http://localhost:8080/pedido/"+id).then(function(result){
+				var codResposta = result.data;
+				promessa.resolve(codResposta);
+			})
+
+			return promessa.promise;
+		},
 	};
 })

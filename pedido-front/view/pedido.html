@@ -2,28 +2,44 @@
 	<h3>{{titulo}}</h3>
 	<br>
 	<table class="table">
-	  <thead class="thead-light">
-	    <tr>
-	    <th scope="col"></th>
-		  <th scope="col">Codigo Pedido</th>
-		  <th scope="col">Nome Cliente</th>
-	      <th class="text-right" scope="col">
-		      <form name="formPedido" ng-submit="adicionarPedido()">
-		      	<input type="text" id="campoCodigo" placeholder="codigo do pedido" ng-model="codPedido"> 
-		      	<button type="submit" class="btn btn-success btn-ms">Adicionar</button>
-		      </form>
-		  </th>
-	    </tr>
-	  </thead>
-	  <tbody>
-	    <tr ng-repeat="pedido in pedidos">
-	      <th scope="col">
-	      	<input type="checkbox" checklist-model="listaCodPedidos" checklist-value="pedido.id">
-	      </th>
-		  <th scope="row">{{ pedido.id }}</th>
-		  <th scope="row">{{ pedido.cliente.nome }}</th>
-	      <td class="text-right"> <a href="pedido/{{ pedido.id }}" class="btn btn-primary btn-ms">Modificar</a></td>
-	    </tr>
-	  </tbody>
+		<thead class="thead-light">
+			<tr>
+				<th scope="col">Codigo Pedido</th>
+				<th scope="col">Nome Cliente</th>
+				<th scope="col">Data do Pedido</th>
+				<th class="text-right" scope="col">
+					<a href="pedido-detalhe" class="btn btn-success btn-ms">Adicionar</a>
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="pedido in pedidos">
+				<th scope="row">{{ pedido.id }}</th>
+				<th scope="row">{{ pedido.cliente.nome }}</th>
+				<th scope="row">{{ pedido.data }}</th>
+				<td class="text-right">
+					<a href="pedido/{{ pedido.id }}" class="btn btn-primary btn-ms">Modificar</a>
+					<button type="button" class="btn btn-danger btn-ms" ng-click="valorizarId(pedido.id)" data-toggle="modal" data-target="#exampleModalCenter">
+						Excluir
+					</button>
+				</td>
+			</tr>
+		</tbody>
 	</table>
+
+	<!-- Modal -->
+	<div class="modal fade" id="exampleModalCenter" role="dialog">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-body">
+					<h4>Tem certeza que deseja excluir Pedido?</h4>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+					<button type="button" class="btn btn-danger" data-dismiss="modal"
+						ng-click="excluirPedido()">Excluir</button>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>

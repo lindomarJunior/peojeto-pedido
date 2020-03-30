@@ -1,0 +1,45 @@
+<div ng-controller="clienteController" data-ng-init="carregarClientes()">
+	<h3>{{titulo}}</h3>
+	<br>
+	<table class="table">
+	  <thead class="thead-light">
+	    <tr>
+		  <th scope="col">Codigo</th>
+		  <th scope="col">Nome</th>
+		  <th scope="col">CPF</th>
+	      <th class="text-right" scope="col">
+		      <form name="formCliente" ng-submit="adicionarCliente()">
+		      	<a href="cliente-detalhe" class="btn btn-success btn-ms">Adicionar</a>
+		      </form>
+		  </th>
+	  </thead>
+	  <tbody>
+	    <tr ng-repeat="cliente in clientes">
+		  <th scope="row">{{ cliente.id }}</th>
+		  <th scope="row">{{ cliente.nome }}</th>
+		  <th scope="row">{{ cliente.cpf }}</th>
+		  <th class="text-right" scope="row">
+				<a href="cliente-detalhe/{{cliente.id}}" class="btn btn-primary btn-ms">Modificar</a>
+				<button type="button" class="btn btn-danger btn-ms" ng-click="valorizarId(cliente.id)" data-toggle="modal" data-target="#exampleModalCenter">
+					Excluir
+				</button>
+		  </th>
+	    </tr>
+	  </tbody>
+	</table>
+
+	<!-- Modal -->
+	<div class="modal fade" id="exampleModalCenter" role="dialog" >
+		<div class="modal-dialog modal-dialog-centered" role="document">
+		  <div class="modal-content">
+			<div class="modal-body">
+				<h4>Tem certeza que deseja excluir Cliente?</h4>
+			</div>
+			<div class="modal-footer">
+			  <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+			  <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="excluirCliente()">Excluir</button>
+			</div>
+		  </div>
+		</div>
+	  </div>
+</div>

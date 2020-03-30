@@ -1,0 +1,31 @@
+<div ng-controller="produtoController" data-ng-init="carregarProduto()">
+	<h3>{{titulo}}</h3>
+	<br>
+	<form name="formProduto" ng-submit="salvar()">
+		<div class="form-group col-md-6">
+			<label for="sku">SKU:</label>
+			<input type="text" class="form-control" id="sku" placeholder="SKU" ng-model="produto.sku" ng-required="true">
+		  </div>
+		<div class="form-group col-md-6">
+		  <label for="nome">Nome:</label>
+		  <input type="text" class="form-control" id="nome" placeholder="Nome" ng-model="produto.nome" ng-required="true">
+		</div>
+		<div class="form-group col-md-6">
+			<label for="descricao">Descrição:</label>
+			<input type="text" class="form-control" id="descricao" placeholder="Descrição" ng-model="produto.descricao" ng-required="true">
+		</div>
+		<div class="form-group col-md-6">
+			<label for="preco">Preço:</label>
+			<input class="form-control" id="preco" placeholder="Preço" ng-model="produto.preco" ng-required="true" 
+			type="number" step="0.01" min="0.01">
+		</div>
+		<div class="form-group col-md-6">
+			<label for="quantidade">Quantidade:</label>
+			<input type="text" class="form-control" id="quantidade" placeholder="Quantidade" ng-model="produto.quantidade" ng-required="true">
+		</div>
+		<div class="form-group col-md-6">
+			<a href="produto" class="btn btn-secondary btn-ms">Voltar</a>
+			<button type="submit" class="btn btn-primary">Salvar</button>
+		</div>
+	  </form>
+</div>
