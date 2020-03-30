@@ -2,15 +2,17 @@
 
 Na raiz do projeto frontend executar os dois comandos:
 
-docker build -t pedido-front .
-
-docker run -p 8000:8000 -d pedido-front
+```sh
+$ docker build -t pedido-front .
+$ docker run -p 8000:8000 -d pedido-front
+```
 
 Na raiz do projeto backend executar os dois comandos:
 
-docker build -t lindomar/imagem-projeto .
-
-docker-compose up
+```sh
+$ docker build -t lindomar/imagem-projeto .
+$ docker-compose up
+```
 
 # Execução do projeto em ambiente de desenvolvimento
 
